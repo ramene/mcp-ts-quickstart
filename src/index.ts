@@ -1,11 +1,12 @@
 /**
  * Enhanced MCP TypeScript Quickstart
- * 
+ *
  * Features:
  * - Auto-loading of tools, resources, and prompts
+ * - Modular package system for distributing tools as npm packages
  * - HTTP/SSE transport support for remote access
  * - Build-less TypeScript using Node v23+
- * 
+ *
  * Based on: https://github.com/cephalization/mcp-ts-quickstart
  * Enhanced with patterns from fastmcp and alexanderop/mcp-server-starter-ts
  */
@@ -13,6 +14,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { autoLoadModules } from './registry/auto-loader.ts';
+import { autoLoadFromPackages } from './registry/package-loader.ts';
 import { startHTTPServer, setupGracefulShutdown } from './transports/http-sse-transport.ts';
 
 // Create MCP server
@@ -49,7 +51,18 @@ async function main() {
   log('📦 Loading modules...');
 
   try {
-    // Load tools
+    // OPTIONAL: Load tools from npm packages
+    // Uncomment to enable package-based tools:
+    /*
+    await autoLoadFromPackages(server, {
+      scope: '@your-scope',              // e.g., '@think-arch'
+      enabledPackages: [],               // Leave empty to load all, or specify: ['mcp-github-tools']
+      verbose: VERBOSE,
+      throwOnError: false
+    });
+    */
+
+    // Load local tools
     await autoLoadModules(server, '../tools', { verbose: VERBOSE });
 
     // Load resources (if directory exists)

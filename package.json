@@ -12,6 +12,7 @@
     "start:inspector": "./mcp-inspect.mjs",
     "dev": "npm run start",
     "dev:http": "npm run start:http",
+    "create-package": "node --experimental-strip-types bin/create-mcp-package.ts",
     "test": "tsx tests/integration/transports.test.ts",
     "test:integration": "tsx tests/integration/transports.test.ts",
     "example:http": "tsx tests/examples/http-sse-client.ts",

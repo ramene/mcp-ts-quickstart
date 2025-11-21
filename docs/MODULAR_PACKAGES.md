@@ -38,6 +38,48 @@ MCP tool packages follow a standard structure:
 
 ## Creating a Tool Package
 
+### Quick Start: Using the Package Generator
+
+The fastest way to create a new MCP tool package is using the built-in generator:
+
+```bash
+npm run create-package
+```
+
+The interactive generator will prompt you for:
+- **Package scope**: Your organization or personal scope (e.g., `@your-org`)
+- **Domain**: The service/domain you're integrating (e.g., `github`, `slack`, `notion`)
+- **Description**: What your package does
+- **Author**: Your name and email
+- **First tool**: Initial tool name and description
+
+**Generator Output**:
+```
+@your-scope/mcp-domain-tools/
+├── package.json              ✅ Configured with MCP dependencies
+├── mcp.config.json          ✅ Package metadata
+├── tsconfig.json            ✅ TypeScript configuration
+├── README.md                ✅ Usage documentation
+├── src/
+│   ├── index.ts             ✅ Exports all tools
+│   ├── lib/
+│   │   ├── registry-types.ts ✅ Type definitions
+│   │   └── types.ts         ✅ Domain-specific types
+│   └── tools/
+│       └── your-tool.ts     ✅ Example tool implementation
+```
+
+**Next Steps After Generation**:
+1. `cd mcp-domain-tools`
+2. `pnpm install`
+3. `pnpm build`
+4. Add more tools to `src/tools/`
+5. Test with package auto-loader
+
+### Manual Creation
+
+Alternatively, you can create packages manually:
+
 ### 1. Package Configuration (package.json)
 
 ```json

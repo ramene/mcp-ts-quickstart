@@ -11,12 +11,9 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.22.0
         version: 1.22.0
-      express:
-        specifier: ^4.21.2
-        version: 4.21.2
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
+      '@think-arch/mcp-framework-core':
+        specifier: file:../mcp-framework-core
+        version: file:../mcp-framework-core(@modelcontextprotocol/sdk@1.22.0)
     devDependencies:
       '@modelcontextprotocol/inspector':
         specifier: ^0.17.2
@@ -655,6 +652,13 @@ packages:
 
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
+
+  '@think-arch/mcp-framework-core@file:../mcp-framework-core':
+    resolution: {directory: ../mcp-framework-core, type: directory}
+    engines: {node: '>=23.0.0'}
+    hasBin: true
+    peerDependencies:
+      '@modelcontextprotocol/sdk': ^1.22.0
 
   '@tsconfig/node10@1.0.12':
     resolution: {integrity: sha512-UCYBaeFvM11aU2y3YPZ//O5Rhj+xKyzy7mvcIoAjASbigy8mHMryP5cK7dgjlz2hWxh1g5pLw084E0a/wlUSFQ==}
@@ -1588,9 +1592,6 @@ packages:
     peerDependencies:
       zod: ^3.25 || ^4
 
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
-
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
@@ -2119,6 +2120,14 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@radix-ui/rect@1.1.1': {}
+
+  '@think-arch/mcp-framework-core@file:../mcp-framework-core(@modelcontextprotocol/sdk@1.22.0)':
+    dependencies:
+      '@modelcontextprotocol/sdk': 1.22.0
+      express: 4.21.2
+      zod: 3.25.76
+    transitivePeerDependencies:
+      - supports-color
 
   '@tsconfig/node10@1.0.12': {}
 
@@ -3092,7 +3101,5 @@ snapshots:
   zod-to-json-schema@3.25.0(zod@3.25.76):
     dependencies:
       zod: 3.25.76
-
-  zod@3.23.8: {}
 
   zod@3.25.76: {}

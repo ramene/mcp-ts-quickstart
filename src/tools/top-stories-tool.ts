@@ -7,8 +7,7 @@
  * pattern for auto-loading.
  */
 
-import { z } from 'zod';
-import type { RegisterableModule } from '../registry/registry-types.ts';
+import { z, type RegisterableModule } from '@think-arch/mcp-framework-core';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 /**

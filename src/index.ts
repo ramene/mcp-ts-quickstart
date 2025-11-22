@@ -13,9 +13,12 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { autoLoadModules } from './registry/auto-loader.ts';
-import { autoLoadFromPackages } from './registry/package-loader.ts';
-import { startHTTPServer, setupGracefulShutdown } from './transports/http-sse-transport.ts';
+import {
+  autoLoadModules,
+  autoLoadFromPackages,
+  startHTTPServer,
+  setupGracefulShutdown
+} from '@think-arch/mcp-framework-core';
 
 // Create MCP server
 const server = new McpServer({
@@ -63,11 +66,11 @@ async function main() {
     */
 
     // Load local tools
-    await autoLoadModules(server, '../tools', { verbose: VERBOSE });
+    await autoLoadModules(server, './src/tools', { verbose: VERBOSE });
 
     // Load resources (if directory exists)
     try {
-      await autoLoadModules(server, '../resources', {
+      await autoLoadModules(server, './src/resources', {
         verbose: VERBOSE,
         throwOnError: false
       });
@@ -79,7 +82,7 @@ async function main() {
 
     // Load prompts (if directory exists)
     try {
-      await autoLoadModules(server, '../prompts', {
+      await autoLoadModules(server, './src/prompts', {
         verbose: VERBOSE,
         throwOnError: false
       });
